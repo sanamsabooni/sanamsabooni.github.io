@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta r="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanam Sabooni</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/colors.css">
+    <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="#work-experience">Experience</a>
+            </li>
+            <li>
+                <a href="#projects">Projects</a>
+            </li>
+            <li>
+                <a href="#about">Skills</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="bg"></div>
+    <section id="work-experience">
+        <h2>Work Experience</h2>
+        <div class="work-experience-content">
+            <div class="job-card">
+                <div class="company-logo">
+                    <a href="http://www.wiredms.com" target="_blank" rel="noopener noreferrer">
+                        <img src="resources/wms_logo.png" alt="Wms logo">
+                    </a>
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="company-info">
+                            <h3>Wired Media Solutions</h3>
+                        </div>
+                    </div>
+                    <p class="company-role">Software Engineer</p>
+                    <p class="term">January 2021 - July 2024</p>
+                    <ul class="responsibilities">
+                        <li>Designed, developed, deployed, and maintained the Crestron Home driver product line</li>
+                        <li>Collaborated with engineers from other companies to streamline API implementations and
+                            integrated them into our products</li>
+                        <li>Created solutions for multiple control systems to coexist within the same installation be it
+                            commercial or residential</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="job-card">
+                <div class="company-logo">
+                    <a href="http://www.arcs.center" target="_blank" rel="noopener noreferrer">
+                        <img src="resources/Arcs_black.png" alt="ARCS Logo">
+                    </a>
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="company-info">
+                            <h3>Autonomy Research Center for STEAHM (ARCS)</h3>
+                        </div>
+                    </div>
+                    <p class="company-role">Research Associate</p>
+                    <p class="term">October 2023 - Present</p>
+                    <ul class="responsibilities">
+                        <li>Working with the Proteus team to develop a new programming language based on Hierarchical
+                            State
+                            Machines for use in NASA/JPL</li>
+                        <li>Research topics:
+                            <ul class="nested-responsibilities">
+                                <li>Lexers</li>
+                                <li>Typecheckers</li>
+                                <li>Parsers</li>
+                                <li>Linters</li>
+                                <li>Abstract Syntax Trees</li>
+                                <li>Language Server Protocols</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="job-card">
+                <div class="company-logo">
+                    <img src="resources/cmm_logo.png" alt="CMM Logo">
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="company-info">
+                            <h3>Cornerstone Molds and Machining</h3>
+                        </div>
+                    </div>
+                    <p class="company-role">Machinist and CNC Programmer</p>
+                    <p class="term">February 2016 - August 2019</p>
+                    <ul class="responsibilities">
+                        <li>Edited and deployed a custom post-processor which included canned cycle operations</li>
+                        <li>Created, validated, and executed CNC programms with various CNC machines</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project-content">
+            <div class="project-entry alternate">
+                <div class="project-info">
+                    <h3>Crestron Home Drivers</h3>
+
+                    <p class="description">Drivers that allow Crestron Home to fully integrate with third party systems,
+                        including:
+                    <ul class="project-details">
+                        <li>Lutron Homeworks QSX - Ketra</li>
+                        <li>Vantage</li>
+                        <li>Shelly</li>
+                        <li>Colorbeam</li>
+                        <li>Loxone</li>
+                        <li>Big Ass Fans</li>
+                    </ul>
+                    </p>
+                </div>
+                <div class="project-media">
+                    <div class="image-stack">
+                        <img src="resources/ch_home_bg.jpg" alt="Project Media Background" class="image-bg">
+                        <img src="resources/ch_home.png" alt="Project Media" class="image-foreground">
+                    </div>
+                    <!-- Replace with <img>, <video>, or <iframe> as needed -->
+                    <!-- Example for video -->
+                    <!-- <video src="path-to-your-video.mp4" controls></video> -->
+                    <!-- Example for GIF -->
+                    <!-- <img src="path-to-your-gif.gif" alt="Project Media"> -->
+                </div>
+            </div>
+            <div class="project-entry">
+                <div class="project-info">
+                    <h3>
+                        Cake
+                    </h3>
+                    <p class="description">
+                        Worked with Warm Apple Pie to develop a new containerized home automation framework. It is able
+                        to
+                        scale horizontally to meet the needs of any sized installation. Data persistence is a
+                        PostGreSQL
+                        database that can be modified and maintained through the configuration API that was built around
+                        it
+                        or pgAdmin.
+                    </p>
+                    <div class="project-buttons">
+                        <a href="https://www.warmapplepie.com" target="_blank" rel="noopener noreferrer"
+                            class="project-button">Cake</a>
+                    </div>
+                </div>
+                <div class="project-media">
+                    <!-- Replace with <img>, <video>, or <iframe> as needed -->
+                    <img src="resources/cake.png" alt="Project Media">
+                    <!-- Example for video -->
+                    <!-- <video src="path-to-your-video.mp4" controls></video> -->
+                    <!-- Example for GIF -->
+                    <!-- <img src="path-to-your-gif.gif" alt="Project Media"> -->
+                </div>
+            </div>
+            <div class="project-entry alternate">
+                <div class="project-info">
+                    <h3>CH Logic</h3>
+                    <p class="description">Extension driver for Crestron Home that utilizes lua scripts to control and
+                        action off of almost anything in the Crestron Home ecosystem. This has given users and
+                        integrators
+                        the ability to do almost anything they can dream up. Being lua scripts, they can be
+                        modified, loaded, and unloaded at runtime. The scripts are generated using a custom gui hosted
+                        on the Crestron Home processor.</p>
+                </div>
+                <div class="project-media">
+                    <!-- Replace with <img>, <video>, or <iframe> as needed -->
+                    <img src="resources/ch_logic.png" alt="Project Media">
+                    <!-- Example for video -->
+                    <!-- <video src="path-to-your-video.mp4" controls></video> -->
+                    <!-- Example for GIF -->
+                    <!-- <img src="path-to-your-gif.gif" alt="Project Media"> -->
+                </div>
+            </div>
+            <div class="project-entry">
+                <div class="project-info">
+                    <h3>dotNet Color</h3>
+                    <p class="description">
+                        Created a simple library to convert color interpretations (RGB, HSL, HSV) as an exploration of a
+                        more functional coding style. One can generate closure functions to map across color
+                        interpretations
+                        and scales. The structures can be deconstructed in a single operation or each value can be
+                        accessed
+                        individually. Planning on adding HEX next.
+                    </p>
+                    <div class="project-buttons">
+                        <a href="https://www.github.com/DylanMoon/dotNetColor" target="_blank" rel="noopener noreferrer"
+                            class="project-button">Code</a>
+                    </div>
+                </div>
+                <div class="project-media">
+                    <!-- Replace with <img>, <video>, or <iframe> as needed -->
+                    <img src="resources/dotnetcolor.png" alt="Project Media">
+                    <!-- Example for video -->
+                    <!-- <video src="path-to-your-video.mp4" controls></video> -->
+                    <!-- Example for GIF -->
+                    <!-- <img src="path-to-your-gif.gif" alt="Project Media"> -->
+                </div>
+            </div>
+            <div class="project-entry alternate">
+                <div class="project-info">
+                    <h3>Budgeting App</h3>
+                    <p class="description">
+                        In my senior design class I was part of a group that developed a cross platform budgeting app.
+                        The
+                        app encourages the user to set a budget and track expenses. A mobile and web version were made
+                        that
+                        share a common backend so all data will be synced. I worked on the database and backend API.
+                    </p>
+                    <div class="project-buttons">
+                        <a href="https://www.github.com/DylanMoon/COMP490" target="_blank" rel="noopener noreferrer"
+                            class="project-button">Backend Code</a>
+                        <a href="https://www.github.com/edenrosales/GitMuney" target="_blank" rel="noopener noreferrer"
+                            class="project-button">Frontend Code</a>
+                    </div>
+                </div>
+                <div class="project-media">
+                    <!-- Replace with <img>, <video>, or <iframe> as needed -->
+                    <img src="resources/gitmunny.png" alt="Project Media">
+                    <!-- Example for video -->
+                    <!-- <video src="path-to-your-video.mp4" controls></video> -->
+                    <!-- Example for GIF -->
+                    <!-- <img src="path-to-your-gif.gif" alt="Project Media"> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>
+            Skills
+        </h2>
+        <div class="skills">
+            <div class="skill-column">
+                <div class="skill-entry">
+                    <img class="skill-icon" src="resources/icons/devicon--jupyter-wordmark.png" alt="Jupyter notebook icon">
+                    <div class="skill-name">Jupyter</div>
+                </div>
+                <div class="skill-entry">
+                    <img class="skill-icon" src="resources/icons/devicon--java.png" alt="java icon">
+                    <div class="skill-name">Java</div>
+                </div>
+                <div class="skill-entry">
+                    <img class="skill-icon" src="resources/icons/devicon--javascript.png" alt="javascript icon">
+                    <div class="skill-name">Javascript</div>
+                </div>
+            </div>
+            <div class="skill-column">
+                <div class="skill-entry">
+                    <img class="skill-icon" src="resources/icons/devicon--git.png" alt="git icon">
+                    <div class="skill-name">Git</div>
+                </div>
+                <div class="skill-entry">
+                    <img class="skill-icon" src="resources/icons/devicon--dot-net.png" alt="dot-net icon">
+                    <div class="skill-name">.Net</div>
+                </div>
+                <div class="skill-entry">
+                    <img class="skill-icon" src="resources/icons/devicon--lua.png" alt="lua icon">
+                    <div class="skill-name">Lua</div>
+                </div>
+                <div class="skill-entry">
+                    <img class="skill-icon" src="resources/icons/vscode-icons--file-type-nuget.png" alt="nuget icon">
+                    <div class="skill-name">Nuget</div>
+                </div>
+            </div>
+            <div class="skill-column">
+                <div class="skill-entry">
+                    <img class="skill-icon" src="resources/icons/devicon--postgresql.png" alt="postgresql icon">
+                    <div class="skill-name">PostgreSQL</div>
+                </div>
+                <div class="skill-entry">
+                    <img class="skill-icon" src="resources/icons/devicon--gitlab.png" alt="gitlab icon">
+                    <div class="skill-name">GitLab</div>
+                </div>
+                <div class="skill-entry">
+                    <img class="skill-icon" src="resources/icons/devicon--go.png" alt="go icon">
+                    <div class="skill-name">Go</div>
+                </div>
+                <div class="skill-entry"> 
+                    <img class="skill-icon" src="resources/icons/devicon--rider.png" alt="rider icon">
+                    <div class="skill-name">Rider</div>
+                </div>
+            </div>
+            <div class="skill-column">
+                <div class="skill-entry">
+                    <img class="skill-icon" src="resources/icons/devicon--docker.png" alt="docker icon">
+                    <div class="skill-name">Docker</div>
+                </div>
+                <div class="skill-entry">
+                    <img class="skill-icon" src="resources/icons/mdi--github.png" alt="github icon">
+                    <div class="skill-name">GitHub</div>
+                </div>
+                <div class="skill-entry">
+                    <img class="skill-icon" src="resources/icons/devicon--python.png" alt="python icon">
+                    <div class="skill-name">Python</div>
+                </div>
+            </div>
+        </div>
+        <div class="education">
+            <!-- <h3 class="education-header">
+                Education
+            </h3> -->
+            <div class="education-card">
+                <div class="education-seal">
+                    <img src="resources/CSUN_Seal.png" alt="California State University Northridge Seal">
+                </div>
+                <div class="education-description">
+                    <p class="education-institution">
+                        California State University Northridge
+                    </p>
+                    <p class="education-degree">
+                        Masters graduate of Computer Science with Distinction
+                    </p>
+                    <p class="term">2022 - 2023</p>
+                    <p class="education-gpa">
+                        Cumulative GPA: 3.89
+                    </p>
+                </div>
+            </div>
+           
+        </div>
+    </section>
+    <footer class="footer">
+        <ul>
+            <li>
+                <a class="myLinks" href="https://www.linkedin.com/in/sanamsabooni" target="_blank" rel="noopener noreferrer">
+                    <span class="iconify" data-icon="devicon:linkedin"></span>
+                </a>
+            </li>
+            <li>
+                <a class="myLinks" href="https://www.github.com/SanamSabooni" target="_blank" rel="noopener noreferrer">
+                    <span class="iconify" data-icon="devicon:github"></span>
+                </a>
+            </li>
+            <li>
+                <a class="myLinks" href="resources/DylanMoonResume.pdf" target="_blank" rel="noopener noreferrer">
+                    <span class="iconify" data-icon="carbon:document"></span>
+                </a>
+            </li>
+            <li>
+                <a class="myLinks" href="mailto:sanam.sabooni@gmail.com" target="_blank" rel="noopener noreferrer">
+                    <span class="iconify" data-icon="uiw:mail"></span>
+                </a>
+            </li>
+        </ul>
+    </footer>
+</body>
+
+</html>
