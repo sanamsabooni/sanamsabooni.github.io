@@ -134,9 +134,11 @@ h3 a{
 #work-experience h2 {
   font-size: 2.5rem;
   font-weight: bold;
-  margin: 0; 
-  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem; 
+  padding: 5px;
   color: var(--header-color);
+  box-shadow: 5px 5px 0px var(--section-box-shadow);
+  /* text-shadow: 10px 10px 10px var(--box-shadow-color); */
 }
 
 .work-experience-content {
@@ -167,6 +169,7 @@ h3 a{
 .card-header h3 {
   margin: 0;
   color: var(--card-header-color);
+  font-size: 1.5rem;
 }
 
 .company-logo {
@@ -192,6 +195,10 @@ h3 a{
   color: var(--card-text-color);
 }
 
+.company-role{
+  color: rgb(209, 0, 0);
+}
+
 .term {
   font-style: italic;
   color: var(--term-color);
@@ -202,6 +209,7 @@ h3 a{
   list-style-type: disc;
   padding-left: 1.5rem;
   margin: 0;
+  color: var(--card-text-color);
 }
 
 .responsibilities li {
@@ -232,9 +240,11 @@ h3 a{
 #projects h2 {
   font-size: 2.5rem;
   font-weight: bold;
-  margin: 0; 
-  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem; 
+  padding: 5px;
   color: var(--header-color);
+  box-shadow: 5px 5px 0px var(--section-box-shadow);
+  /* text-shadow: 10px 10px 10px var(--box-shadow-color); */
 }
 
 .project-content{
@@ -380,9 +390,11 @@ h3 a{
 #about h2 {
   font-size: 2.5rem;
   font-weight: bold;
-  margin: 0; 
-  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem; 
+  padding: 5px;
   color: var(--header-color);
+  box-shadow: 5px 5px 0px var(--section-box-shadow);
+  /* text-shadow: 10px 10px 10px var(--box-shadow-color); */
 }
 
 
@@ -448,6 +460,7 @@ h3 a{
   font-size: 1.1rem;
   color: white;
   text-shadow: 1px 1px 2px black,-1px -1px 2px black;
+  transform: translate(0, -100%);
 }
 
 .education {
@@ -480,20 +493,23 @@ h3 a{
   margin-right: 1.5rem;
   background-color: var(--card-bg-color);
   max-width: 200px;
-  max-height: 100%;
+  max-height: 200px;
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: auto;
+  height: auto;
 }
 
 .education-seal img{
   max-width: 100%;
-  max-height: 100%;
+  max-height: 190px;
   object-fit: contain;
   height: auto;
   width: auto;
   border-radius: 4px;
+  margin: 5px;
 }
 
 .education-description {
