@@ -18,43 +18,34 @@
             overflow-x: hidden;
         }
 
-        /* ---- 3D HEADER ---- */
+        /* ---- HEADER ---- */
         #hero {
             position: relative;
             width: 100%;
             height: 500px;
             overflow: hidden;
-            /* 3D perspective container */
             perspective: 800px;
             background: radial-gradient(ellipse at 50% 60%, #0d1535 0%, #040610 60%, #000000 100%);
-            /* Subtle bottom edge shadow for depth illusion */
             box-shadow:
                 0 20px 60px rgba(0,0,0,0.9),
                 inset 0 -2px 0 rgba(212,175,55,0.15),
                 inset 0 -1px 0 rgba(255,255,255,0.05);
         }
-
-        /* Desert horizon glow at bottom of header */
         #hero::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 80px;
+            bottom: 0; left: 0;
+            width: 100%; height: 80px;
             background: linear-gradient(to top, rgba(180,100,20,0.12) 0%, transparent 100%);
             pointer-events: none;
         }
-
         canvas {
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            /* Tilt the canvas plane in 3D */
             transform: rotateX(6deg) scale(1.06);
             transform-origin: center bottom;
         }
-
         .hero-text {
             position: absolute;
             top: 50%; left: 50%;
@@ -69,9 +60,7 @@
             letter-spacing: 10px;
             color: #fff;
             text-transform: uppercase;
-            text-shadow:
-                0 0 40px rgba(212,175,55,0.3),
-                0 2px 4px rgba(0,0,0,0.8);
+            text-shadow: 0 0 40px rgba(212,175,55,0.3), 0 2px 4px rgba(0,0,0,0.8);
         }
         .hero-text p {
             margin-top: 14px;
@@ -82,58 +71,35 @@
             text-shadow: 0 0 20px rgba(212,175,55,0.5);
         }
 
-        /* ---- PAGE CONTENT ---- */
-        .wrap {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 80px 24px;
-        }
+        /* ---- CONTENT ---- */
+        .wrap { max-width: 900px; margin: 0 auto; padding: 80px 24px; }
         section { margin-bottom: 100px; }
         h2 {
-            font-size: 1.6rem;
-            font-weight: 300;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #fff;
-            border-bottom: 1px solid #222;
-            padding-bottom: 14px;
-            margin-bottom: 36px;
+            font-size: 1.6rem; font-weight: 300; letter-spacing: 2px;
+            text-transform: uppercase; color: #fff;
+            border-bottom: 1px solid #222; padding-bottom: 14px; margin-bottom: 36px;
         }
         p { line-height: 1.8; opacity: 0.8; margin-bottom: 16px; }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 36px;
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 36px; }
         .card {
             background: rgba(255,255,255,0.02);
             border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 6px;
-            padding: 32px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
+            border-radius: 6px; padding: 32px;
+            transition: all 0.4s ease; position: relative; overflow: hidden;
         }
         .card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 1px;
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
             background: linear-gradient(to right, transparent, rgba(212,175,55,0.4), transparent);
-            opacity: 0;
-            transition: opacity 0.4s;
+            opacity: 0; transition: opacity 0.4s;
         }
         .card:hover { transform: translateY(-8px); border-color: rgba(212,175,55,0.25); }
         .card:hover::before { opacity: 1; }
         .card h3 { font-size: 1.2rem; font-weight: 400; color: var(--gold); margin-bottom: 12px; }
         .card p { font-size: 0.9rem; opacity: 0.7; }
         .tags { margin-top: 20px; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); opacity: 0.5; }
-
         .links { display: flex; gap: 28px; }
         a { color: var(--gold); text-decoration: none; border-bottom: 1px solid transparent; transition: border 0.3s; }
         a:hover { border-bottom: 1px solid var(--gold); }
-
         footer { text-align: center; padding: 50px; font-size: 0.78rem; opacity: 0.3; letter-spacing: 1px; border-top: 1px solid #1a1a1a; }
     </style>
 </head>
@@ -153,12 +119,10 @@
         <p>I am a Data Scientist and Automation Engineer based in Simi Valley, California. My work focuses on data analysis, machine learning, and workflow automation. I build systems that reduce manual effort and surface insights from data.</p>
         <p>I work as a Data Analyst at Prudential and serve as a Lecturer at CSUN, teaching data and applied computing.</p>
     </section>
-
     <section id="automation">
         <h2>Workflow Automation</h2>
         <p>I design and implement automation using the n8n platform to replace manual processes with reliable, scheduled pipelines. My work connects APIs, databases, and AI models into systems that run without human intervention.</p>
     </section>
-
     <section id="projects">
         <h2>Featured Work</h2>
         <div class="grid">
@@ -179,7 +143,6 @@
             </div>
         </div>
     </section>
-
     <section id="contact">
         <h2>Contact</h2>
         <p>Open to roles in data science, automation, and systems architecture.</p>
@@ -199,101 +162,66 @@ const ctx = canvas.getContext('2d');
 const hero = document.getElementById('hero');
 
 let W, H;
-let stars = [];
-const NUM = 220;
-const FOV = 500;      // focal length — controls 3D depth
-const SPEED = 0.15;   // drift speed
-const MOUSE_PULL = 120; // magnet radius
-const DEPTH = 800;    // max z depth
-
-let mx = 0, my = 0;   // mouse relative to canvas center
-
-function resize() {
-    W = canvas.width = hero.offsetWidth;
-    H = canvas.height = hero.offsetHeight;
-}
-
-function makeStar() {
-    return {
-        x: (Math.random() - 0.5) * W * 3,
-        y: (Math.random() - 0.5) * H * 3,
-        z: Math.random() * DEPTH,
-        oz: 0,   // will be set below
-        size: Math.random() * 1.8 + 0.2,
-        brightness: Math.random() * 0.5 + 0.5,
-        twinkle: Math.random() * Math.PI * 2
-    };
-}
+let dots = [];
+const NUM = 180;
+const MOUSE_RADIUS = 160;
+let mx = -1000, my = -1000;
 
 function init() {
-    resize();
-    stars = [];
+    W = canvas.width = hero.offsetWidth;
+    H = canvas.height = hero.offsetHeight;
+    dots = [];
     for (let i = 0; i < NUM; i++) {
-        let s = makeStar();
-        s.oz = s.z;
-        stars.push(s);
+        const x = Math.random() * W;
+        const y = Math.random() * H;
+        // vary size and brightness to suggest depth
+        const size = Math.random() * 1.8 + 0.3;
+        const alpha = Math.random() * 0.5 + 0.4;
+        dots.push({
+            x, y,
+            ox: x, oy: y,
+            size, alpha,
+            twinkle: Math.random() * Math.PI * 2
+        });
     }
-}
-
-function project(x, y, z) {
-    // Perspective projection: map 3D -> 2D
-    let scale = FOV / (FOV + z);
-    return {
-        px: x * scale + W / 2,
-        py: y * scale + H / 2,
-        scale: scale
-    };
 }
 
 function animate() {
     ctx.clearRect(0, 0, W, H);
 
-    for (let i = 0; i < stars.length; i++) {
-        let s = stars[i];
+    for (let i = 0; i < dots.length; i++) {
+        const d = dots[i];
 
-        // Move stars closer (z decreases = coming toward viewer)
-        s.z -= SPEED;
-        if (s.z <= 0) {
-            // Reset star to far distance
-            let ns = makeStar();
-            ns.z = DEPTH;
-            ns.oz = DEPTH;
-            stars[i] = ns;
-            continue;
+        // Magnet: pull toward mouse, spring back to origin
+        const dx = mx - d.x;
+        const dy = my - d.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < MOUSE_RADIUS && dist > 0) {
+            const force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS;
+            d.x += dx / dist * force * d.size * 4;
+            d.y += dy / dist * force * d.size * 4;
+        } else {
+            // Ease back to origin
+            d.x += (d.ox - d.x) * 0.06;
+            d.y += (d.oy - d.y) * 0.06;
         }
 
-        s.twinkle += 0.03;
-        let twinkleAlpha = s.brightness + Math.sin(s.twinkle) * 0.15;
+        // Gentle twinkle
+        d.twinkle += 0.02;
+        const a = d.alpha + Math.sin(d.twinkle) * 0.12;
 
-        let { px, py, scale } = project(s.x, s.y, s.z);
-
-        // Mouse magnet — pull projected 2D position toward mouse
-        let dx = mx - (px - W / 2);
-        let dy = my - (py - H / 2);
-        let dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < MOUSE_PULL) {
-            let pull = (MOUSE_PULL - dist) / MOUSE_PULL * 0.4;
-            px += dx * pull;
-            py += dy * pull;
-        }
-
-        // Size grows as star approaches (larger z-scale means closer)
-        let r = s.size * scale * 2.5;
-
-        // Brightness increases as star approaches
-        let alpha = Math.min(1, twinkleAlpha * (1 - s.z / DEPTH) * 2.5);
-
-        // Stars close enough get a subtle glow
-        if (scale > 0.7) {
-            ctx.shadowBlur = 6;
-            ctx.shadowColor = `rgba(200,220,255,${alpha * 0.6})`;
+        // Glow on larger stars
+        if (d.size > 1.4) {
+            ctx.shadowBlur = 5;
+            ctx.shadowColor = `rgba(200,220,255,${a * 0.5})`;
         } else {
             ctx.shadowBlur = 0;
         }
 
-        ctx.fillStyle = `rgba(255,255,255,${alpha})`;
+        ctx.fillStyle = `rgba(255,255,255,${Math.max(0, Math.min(1, a))})`;
         ctx.beginPath();
-        ctx.arc(px, py, Math.max(0.3, r), 0, Math.PI * 2);
+        ctx.arc(d.x, d.y, d.size, 0, Math.PI * 2);
         ctx.fill();
     }
 
@@ -302,11 +230,11 @@ function animate() {
 }
 
 hero.addEventListener('mousemove', e => {
-    const rect = hero.getBoundingClientRect();
-    mx = e.clientX - rect.left - W / 2;
-    my = e.clientY - rect.top - H / 2;
+    const rect = canvas.getBoundingClientRect();
+    mx = e.clientX - rect.left;
+    my = e.clientY - rect.top;
 });
-hero.addEventListener('mouseleave', () => { mx = 0; my = 0; });
+hero.addEventListener('mouseleave', () => { mx = -1000; my = -1000; });
 window.addEventListener('resize', init);
 
 init();
