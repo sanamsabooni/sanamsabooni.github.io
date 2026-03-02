@@ -72,7 +72,7 @@
         }
 
         /* ---- CONTENT ---- */
-        .wrap { max-width: 900px; margin: 0 auto; padding: 80px 24px; }
+        .wrap { max-width: 960px; margin: 0 auto; padding: 80px 24px; }
         section { margin-bottom: 100px; }
         h2 {
             font-size: 1.6rem;
@@ -87,8 +87,8 @@
         p { line-height: 1.8; opacity: 0.8; margin-bottom: 16px; }
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 36px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
         }
         .card {
             background: rgba(255,255,255,0.02);
@@ -159,6 +159,11 @@
                 <h3>Smart Home Infrastructure</h3>
                 <p>A backend system using MQTT and n8n to manage IoT devices and automated home routines.</p>
                 <div class="tags">Rust / MQTT / n8n / Docker</div>
+            </div>
+            <div class="card">
+                <h3>Data Reporting Dashboard</h3>
+                <p>An end-to-end pipeline that pulls raw data from multiple sources, transforms it, and feeds a live reporting dashboard updated on a schedule.</p>
+                <div class="tags">Python / SQL / n8n / GCP</div>
             </div>
         </div>
     </section>
