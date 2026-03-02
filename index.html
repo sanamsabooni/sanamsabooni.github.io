@@ -72,7 +72,7 @@
         }
 
         /* ---- CONTENT ---- */
-        .wrap { max-width: 960px; margin: 0 auto; padding: 80px 24px; }
+        .wrap { max-width: 1200px; margin: 0 auto; padding: 80px 24px; }
         section { margin-bottom: 100px; }
         h2 {
             font-size: 1.6rem;
@@ -82,37 +82,66 @@
             color: #fff;
             border-bottom: 1px solid #222;
             padding-bottom: 14px;
-            margin-bottom: 36px;
+            margin-bottom: 50px;
         }
         p { line-height: 1.8; opacity: 0.8; margin-bottom: 16px; }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 32px;
+
+        /* ---- PROJECT ROWS ---- */
+        .project-row {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 70px;
+            align-items: center;
         }
-        .card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 6px;
-            padding: 32px;
-            transition: all 0.4s ease;
+        .project-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .project-video {
+            flex: 2;
+            min-width: 0;
+        }
+        .project-info h3 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .project-info p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            opacity: 0.75;
+            margin-bottom: 20px;
+        }
+        .tags {
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.5;
+        }
+        .video-placeholder {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.3);
+            font-size: 0.9rem;
             position: relative;
             overflow: hidden;
         }
-        .card::before {
+        .video-placeholder::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(to right, transparent, rgba(212,175,55,0.4), transparent);
-            opacity: 0;
-            transition: opacity 0.4s;
+            height: 2px;
+            background: linear-gradient(to right, transparent, rgba(212,175,55,0.3), transparent);
         }
-        .card:hover { transform: translateY(-8px); border-color: rgba(212,175,55,0.25); }
-        .card:hover::before { opacity: 1; }
-        .card h3 { font-size: 1.2rem; font-weight: 400; color: var(--gold); margin-bottom: 12px; }
-        .card p { font-size: 0.9rem; opacity: 0.7; }
-        .tags { margin-top: 20px; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); opacity: 0.5; }
+
         .links { display: flex; gap: 28px; }
         a { color: var(--gold); text-decoration: none; border-bottom: 1px solid transparent; transition: border 0.3s; }
         a:hover { border-bottom: 1px solid var(--gold); }
@@ -144,28 +173,51 @@
 
     <section id="work">
         <h2>Featured Work</h2>
-        <div class="grid">
-            <div class="card">
+
+        <div class="project-row">
+            <div class="project-info">
                 <h3>Job Search Pipeline</h3>
                 <p>An automated system in n8n that scrapes job listings, scores them with AI, and delivers ranked results daily.</p>
                 <div class="tags">n8n / Python / OpenAI / SQL</div>
             </div>
-            <div class="card">
+            <div class="project-video">
+                <div class="video-placeholder">Video placeholder - Add your demo video here</div>
+            </div>
+        </div>
+
+        <div class="project-row">
+            <div class="project-info">
                 <h3>MedCall Insight</h3>
                 <p>A natural language pipeline that analyzes medical call transcripts to extract patterns and reporting metrics.</p>
                 <div class="tags">Python / NLP / n8n / GCP</div>
             </div>
-            <div class="card">
+            <div class="project-video">
+                <div class="video-placeholder">Video placeholder - Add your demo video here</div>
+            </div>
+        </div>
+
+        <div class="project-row">
+            <div class="project-info">
                 <h3>Smart Home Infrastructure</h3>
                 <p>A backend system using MQTT and n8n to manage IoT devices and automated home routines.</p>
                 <div class="tags">Rust / MQTT / n8n / Docker</div>
             </div>
-            <div class="card">
+            <div class="project-video">
+                <div class="video-placeholder">Video placeholder - Add your demo video here</div>
+            </div>
+        </div>
+
+        <div class="project-row">
+            <div class="project-info">
                 <h3>Data Reporting Dashboard</h3>
                 <p>An end-to-end pipeline that pulls raw data from multiple sources, transforms it, and feeds a live reporting dashboard updated on a schedule.</p>
                 <div class="tags">Python / SQL / n8n / GCP</div>
             </div>
+            <div class="project-video">
+                <div class="video-placeholder">Video placeholder - Add your demo video here</div>
+            </div>
         </div>
+
     </section>
 
     <section id="contact">
