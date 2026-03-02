@@ -6,290 +6,312 @@
     <title>Sanam Sabooni | Portfolio</title>
     <style>
         :root {
-            --bg-color: #0b0d17;
-            --text-color: #e0e0e0;
-            --accent-color: #d4af37;
-            --header-height: 450px;
+            --bg: #07080f;
+            --text: #e0e0e0;
+            --gold: #d4af37;
         }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            margin: 0;
-            padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background: var(--bg);
+            color: var(--text);
             overflow-x: hidden;
         }
 
-        /* Night Sky Header */
-        #sky-container {
-            width: 100%;
-            height: var(--header-height);
-            background: linear-gradient(to bottom, #020408 0%, #0b0d17 100%);
+        /* ---- 3D HEADER ---- */
+        #hero {
             position: relative;
+            width: 100%;
+            height: 500px;
             overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            /* 3D perspective container */
+            perspective: 800px;
+            background: radial-gradient(ellipse at 50% 60%, #0d1535 0%, #040610 60%, #000000 100%);
+            /* Subtle bottom edge shadow for depth illusion */
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.9),
+                inset 0 -2px 0 rgba(212,175,55,0.15),
+                inset 0 -1px 0 rgba(255,255,255,0.05);
+        }
+
+        /* Desert horizon glow at bottom of header */
+        #hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(to top, rgba(180,100,20,0.12) 0%, transparent 100%);
+            pointer-events: none;
         }
 
         canvas {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            /* Tilt the canvas plane in 3D */
+            transform: rotateX(6deg) scale(1.06);
+            transform-origin: center bottom;
         }
 
-        .header-content {
-            position: relative;
+        .hero-text {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
             z-index: 10;
             text-align: center;
             pointer-events: none;
         }
-
-        .header-content h1 {
-            font-size: 3.5rem;
-            margin: 0;
-            letter-spacing: 6px;
-            color: white;
+        .hero-text h1 {
+            font-size: 3.6rem;
+            font-weight: 200;
+            letter-spacing: 10px;
+            color: #fff;
             text-transform: uppercase;
-            font-weight: 300;
+            text-shadow:
+                0 0 40px rgba(212,175,55,0.3),
+                0 2px 4px rgba(0,0,0,0.8);
+        }
+        .hero-text p {
+            margin-top: 14px;
+            font-size: 1rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-shadow: 0 0 20px rgba(212,175,55,0.5);
         }
 
-        .header-content p {
-            font-size: 1.1rem;
-            color: var(--accent-color);
-            margin-top: 15px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* Content Sections */
-        .container {
+        /* ---- PAGE CONTENT ---- */
+        .wrap {
             max-width: 900px;
             margin: 0 auto;
-            padding: 80px 20px;
+            padding: 80px 24px;
         }
-
-        section {
-            margin-bottom: 100px;
-        }
-
+        section { margin-bottom: 100px; }
         h2 {
-            font-size: 1.8rem;
-            font-weight: 400;
-            border-bottom: 1px solid #333;
-            padding-bottom: 15px;
-            margin-bottom: 40px;
-            color: white;
-            letter-spacing: 1px;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.02);
-            padding: 35px;
-            border-radius: 4px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            background: rgba(255, 255, 255, 0.04);
-            border-color: var(--accent-color);
-        }
-
-        .card h3 {
-            margin-top: 0;
-            font-weight: 400;
-            color: var(--accent-color);
-            font-size: 1.4rem;
-        }
-
-        .card p {
-            line-height: 1.6;
-            font-size: 0.95rem;
-            opacity: 0.8;
-        }
-
-        .tags {
-            margin-top: 25px;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
+            font-size: 1.6rem;
+            font-weight: 300;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--accent-color);
-            opacity: 0.6;
+            color: #fff;
+            border-bottom: 1px solid #222;
+            padding-bottom: 14px;
+            margin-bottom: 36px;
         }
+        p { line-height: 1.8; opacity: 0.8; margin-bottom: 16px; }
 
-        footer {
-            text-align: center;
-            padding: 60px;
-            font-size: 0.8rem;
-            opacity: 0.4;
-            letter-spacing: 1px;
-            border-top: 1px solid #222;
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 36px;
         }
+        .card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 6px;
+            padding: 32px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(212,175,55,0.4), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .card:hover { transform: translateY(-8px); border-color: rgba(212,175,55,0.25); }
+        .card:hover::before { opacity: 1; }
+        .card h3 { font-size: 1.2rem; font-weight: 400; color: var(--gold); margin-bottom: 12px; }
+        .card p { font-size: 0.9rem; opacity: 0.7; }
+        .tags { margin-top: 20px; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); opacity: 0.5; }
 
-        a {
-            color: var(--accent-color);
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border 0.3s;
-        }
+        .links { display: flex; gap: 28px; }
+        a { color: var(--gold); text-decoration: none; border-bottom: 1px solid transparent; transition: border 0.3s; }
+        a:hover { border-bottom: 1px solid var(--gold); }
 
-        a:hover {
-            border-bottom: 1px solid var(--accent-color);
-        }
-
-        .contact-links {
-            display: flex;
-            gap: 30px;
-            font-size: 1rem;
-        }
+        footer { text-align: center; padding: 50px; font-size: 0.78rem; opacity: 0.3; letter-spacing: 1px; border-top: 1px solid #1a1a1a; }
     </style>
 </head>
 <body>
 
-    <div id="sky-container">
-        <canvas id="sky"></canvas>
-        <div class="header-content">
-            <h1>Sanam Sabooni</h1>
-            <p>Data Scientist & Automation Engineer</p>
+<div id="hero">
+    <canvas id="c"></canvas>
+    <div class="hero-text">
+        <h1>Sanam Sabooni</h1>
+        <p>Data Scientist &amp; Automation Engineer</p>
+    </div>
+</div>
+
+<div class="wrap">
+    <section id="about">
+        <h2>About</h2>
+        <p>I am a Data Scientist and Automation Engineer based in Simi Valley, California. My work focuses on data analysis, machine learning, and workflow automation. I build systems that reduce manual effort and surface insights from data.</p>
+        <p>I work as a Data Analyst at Prudential and serve as a Lecturer at CSUN, teaching data and applied computing.</p>
+    </section>
+
+    <section id="automation">
+        <h2>Workflow Automation</h2>
+        <p>I design and implement automation using the n8n platform to replace manual processes with reliable, scheduled pipelines. My work connects APIs, databases, and AI models into systems that run without human intervention.</p>
+    </section>
+
+    <section id="projects">
+        <h2>Featured Work</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Job Search Pipeline</h3>
+                <p>An automated system in n8n that scrapes job listings, scores them with AI, and delivers ranked results daily.</p>
+                <div class="tags">n8n / Python / OpenAI / SQL</div>
+            </div>
+            <div class="card">
+                <h3>MedCall Insight</h3>
+                <p>A natural language pipeline that analyzes medical call transcripts to extract patterns and reporting metrics.</p>
+                <div class="tags">Python / NLP / n8n / GCP</div>
+            </div>
+            <div class="card">
+                <h3>Smart Home Infrastructure</h3>
+                <p>A backend system using MQTT and n8n to manage IoT devices and automated home routines.</p>
+                <div class="tags">Rust / MQTT / n8n / Docker</div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <div class="container">
-        <section id="about">
-            <h2>About</h2>
-            <p>I am a Data Scientist and Automation Engineer based in Simi Valley, California. My work focuses on data analysis, machine learning, and workflow automation. I build systems that reduce manual effort and surface insights from data.</p>
-            <p>I work as a Data Analyst at Prudential and serve as a Lecturer at CSUN, teaching data and applied computing.</p>
-        </section>
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Open to roles in data science, automation, and systems architecture.</p>
+        <div class="links">
+            <a href="https://linkedin.com">LinkedIn</a>
+            <a href="https://github.com/sanamsabooni">GitHub</a>
+            <a href="mailto:your-email@example.com">Email</a>
+        </div>
+    </section>
+</div>
 
-        <section id="automation">
-            <h2>Workflow Automation</h2>
-            <p>I design and implement complex automation using the n8n platform to replace manual processes with reliable, scheduled pipelines. My work involves connecting disparate APIs, databases, and AI models into cohesive systems that run autonomously.</p>
-        </section>
+<footer>&copy; 2026 Sanam Sabooni</footer>
 
-        <section id="projects">
-            <h2>Featured Work</h2>
-            <div class="project-grid">
-                <div class="card">
-                    <h3>Job Search Pipeline</h3>
-                    <p>An automated system built in n8n that scrapes job listings, scores them against target profiles using AI models, and delivers ranked results daily.</p>
-                    <div class="tags">n8n / Python / OpenAI / SQL</div>
-                </div>
-                <div class="card">
-                    <h3>MedCall Insight</h3>
-                    <p>A natural language processing pipeline that analyzes medical call transcripts to extract key patterns and reporting metrics.</p>
-                    <div class="tags">Python / NLP / n8n / GCP</div>
-                </div>
-                <div class="card">
-                    <h3>Smart Home Infrastructure</h3>
-                    <p>A backend system using MQTT and n8n to manage IoT devices and automated home routines at scale.</p>
-                    <div class="tags">Rust / MQTT / n8n / Docker</div>
-                </div>
-            </div>
-        </section>
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+const hero = document.getElementById('hero');
 
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>I am open to projects in data science, automation, and systems architecture.</p>
-            <div class="contact-links">
-                <a href="https://linkedin.com">LinkedIn</a>
-                <a href="https://github.com/sanamsabooni">GitHub</a>
-                <a href="mailto:your-email@example.com">Email</a>
-            </div>
-        </section>
-    </div>
+let W, H;
+let stars = [];
+const NUM = 220;
+const FOV = 500;      // focal length — controls 3D depth
+const SPEED = 0.15;   // drift speed
+const MOUSE_PULL = 120; // magnet radius
+const DEPTH = 800;    // max z depth
 
-    <footer>
-        &copy; 2026 Sanam Sabooni
-    </footer>
+let mx = 0, my = 0;   // mouse relative to canvas center
 
-    <script>
-        const canvas = document.getElementById('sky');
-        const ctx = canvas.getContext('2d');
-        const container = document.getElementById('sky-container');
+function resize() {
+    W = canvas.width = hero.offsetWidth;
+    H = canvas.height = hero.offsetHeight;
+}
 
-        let width, height;
-        let dots = [];
-        const dotCount = 180;
-        const mouse = { x: -1000, y: -1000, radius: 200 };
+function makeStar() {
+    return {
+        x: (Math.random() - 0.5) * W * 3,
+        y: (Math.random() - 0.5) * H * 3,
+        z: Math.random() * DEPTH,
+        oz: 0,   // will be set below
+        size: Math.random() * 1.8 + 0.2,
+        brightness: Math.random() * 0.5 + 0.5,
+        twinkle: Math.random() * Math.PI * 2
+    };
+}
 
-        function init() {
-            width = container.offsetWidth;
-            height = container.offsetHeight;
-            canvas.width = width;
-            canvas.height = height;
-            dots = [];
+function init() {
+    resize();
+    stars = [];
+    for (let i = 0; i < NUM; i++) {
+        let s = makeStar();
+        s.oz = s.z;
+        stars.push(s);
+    }
+}
 
-            for (let i = 0; i < dotCount; i++) {
-                dots.push({
-                    x: Math.random() * width,
-                    y: Math.random() * height,
-                    originX: 0,
-                    originY: 0,
-                    size: Math.random() * 1.5 + 0.5,
-                    magnetism: (Math.random() * 20) + 5
-                });
-                dots[i].originX = dots[i].x;
-                dots[i].originY = dots[i].y;
-            }
+function project(x, y, z) {
+    // Perspective projection: map 3D -> 2D
+    let scale = FOV / (FOV + z);
+    return {
+        px: x * scale + W / 2,
+        py: y * scale + H / 2,
+        scale: scale
+    };
+}
+
+function animate() {
+    ctx.clearRect(0, 0, W, H);
+
+    for (let i = 0; i < stars.length; i++) {
+        let s = stars[i];
+
+        // Move stars closer (z decreases = coming toward viewer)
+        s.z -= SPEED;
+        if (s.z <= 0) {
+            // Reset star to far distance
+            let ns = makeStar();
+            ns.z = DEPTH;
+            ns.oz = DEPTH;
+            stars[i] = ns;
+            continue;
         }
 
-        function animate() {
-            ctx.clearRect(0, 0, width, height);
-            
-            for (let i = 0; i < dots.length; i++) {
-                let d = dots[i];
-                
-                // Magnet effect logic
-                let dx = mouse.x - d.x;
-                let dy = mouse.y - d.y;
-                let dist = Math.sqrt(dx * dx + dy * dy);
-                
-                if (dist < mouse.radius) {
-                    // Pull towards mouse
-                    let force = (mouse.radius - dist) / mouse.radius;
-                    d.x += (dx / dist) * force * d.magnetism;
-                    d.y += (dy / dist) * force * d.magnetism;
-                } else {
-                    // Return to original position
-                    d.x += (d.originX - d.x) * 0.05;
-                    d.y += (d.originY - d.y) * 0.05;
-                }
+        s.twinkle += 0.03;
+        let twinkleAlpha = s.brightness + Math.sin(s.twinkle) * 0.15;
 
-                // Draw dots
-                ctx.fillStyle = 'rgba(255, 255, 255, ' + (0.4 + Math.random() * 0.3) + ')';
-                ctx.beginPath();
-                ctx.arc(d.x, d.y, d.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-            requestAnimationFrame(animate);
+        let { px, py, scale } = project(s.x, s.y, s.z);
+
+        // Mouse magnet — pull projected 2D position toward mouse
+        let dx = mx - (px - W / 2);
+        let dy = my - (py - H / 2);
+        let dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < MOUSE_PULL) {
+            let pull = (MOUSE_PULL - dist) / MOUSE_PULL * 0.4;
+            px += dx * pull;
+            py += dy * pull;
         }
 
-        window.addEventListener('mousemove', (e) => {
-            const rect = canvas.getBoundingClientRect();
-            mouse.x = e.clientX - rect.left;
-            mouse.y = e.clientY - rect.top;
-        });
+        // Size grows as star approaches (larger z-scale means closer)
+        let r = s.size * scale * 2.5;
 
-        window.addEventListener('mouseleave', () => {
-            mouse.x = -1000;
-            mouse.y = -1000;
-        });
+        // Brightness increases as star approaches
+        let alpha = Math.min(1, twinkleAlpha * (1 - s.z / DEPTH) * 2.5);
 
-        window.addEventListener('resize', init);
+        // Stars close enough get a subtle glow
+        if (scale > 0.7) {
+            ctx.shadowBlur = 6;
+            ctx.shadowColor = `rgba(200,220,255,${alpha * 0.6})`;
+        } else {
+            ctx.shadowBlur = 0;
+        }
 
-        init();
-        animate();
-    </script>
+        ctx.fillStyle = `rgba(255,255,255,${alpha})`;
+        ctx.beginPath();
+        ctx.arc(px, py, Math.max(0.3, r), 0, Math.PI * 2);
+        ctx.fill();
+    }
+
+    ctx.shadowBlur = 0;
+    requestAnimationFrame(animate);
+}
+
+hero.addEventListener('mousemove', e => {
+    const rect = hero.getBoundingClientRect();
+    mx = e.clientX - rect.left - W / 2;
+    my = e.clientY - rect.top - H / 2;
+});
+hero.addEventListener('mouseleave', () => { mx = 0; my = 0; });
+window.addEventListener('resize', init);
+
+init();
+animate();
+</script>
+
 </body>
 </html>
